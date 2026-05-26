@@ -14,3 +14,7 @@ A beginner cybersecurity project built using Python.
 
 ## Example Target
 scanme.nmap.org
+
+## Screenshot
+
+![Port Scanner Output](../../screenshots/python-port-scanner-output.png)
