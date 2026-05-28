@@ -28,6 +28,6 @@ for ip, count in failed_attempts.items():
     print(f"{ip} → Failed Attempts: {count}")
 
     if count >= 3:
-        print(f"⚠️ ALERT: Possible brute-force attack from {ip}\n")
+        print(f" ALERT: Possible brute-force attack from {ip}\n")
 
 log_file.close()
