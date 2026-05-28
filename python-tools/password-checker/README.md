@@ -21,12 +21,9 @@ Cyber@2026
 
 # Screenshots
 
-## Weak Password Example
+## Password Example
 
-![Weak Password](../../screenshots/password-checker-weak.png)
+![Password](../../screenshots/password-checker.png)
 
 ---
 
-## Strong Password Example
-
-![Strong Password](../../screenshots/password-checker-strong.png)
