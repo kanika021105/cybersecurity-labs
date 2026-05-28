@@ -39,4 +39,4 @@ This project helped in understanding:
 ## Screenshot
 
 
-![Packet Sniffer Output](../../screenshots/packet-sniffer-output.png)
+![Packet Sniffer Output](../screenshots/packet-sniffer-output.png)
