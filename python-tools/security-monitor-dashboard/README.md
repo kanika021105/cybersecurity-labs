@@ -47,4 +47,4 @@ Features:
 
 ### Example Alert
 
-![Login Alerts](screenshots/dashboard-login-alerts.png)
+![Login Alerts](../../screenshots/dashboard-login-alerts.png)
