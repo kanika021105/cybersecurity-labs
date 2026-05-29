@@ -1,31 +1,23 @@
-failed_attempts = {}
+def detect_suspicious_logins():
 
-log_file = open("login-log.txt", "r")
+    failed_attempts = {}
 
-lines = log_file.readlines()
+    with open("logs/login-log.txt", "r") as file:
 
-print("\n--- Suspicious Login Activity ---\n")
+        lines = file.readlines()
 
-for line in lines:
+        for line in lines:
 
-    parts = line.strip().split()
+            parts = line.strip().split()
 
-    ip = parts[0]
-    status = parts[1]
+            ip = parts[0]
+            status = parts[1]
 
-    if status == "FAILED":
+            if status == "FAILED":
 
-        if ip not in failed_attempts:
-            failed_attempts[ip] = 1
-        else:
-            failed_attempts[ip] += 1
+                if ip not in failed_attempts:
+                    failed_attempts[ip] = 1
+                else:
+                    failed_attempts[ip] += 1
 
-
-for ip, count in failed_attempts.items():
-
-    print(f"{ip} → Failed Attempts: {count}")
-
-    if count >= 3:
-        print(f" ALERT: Possible brute-force attack from {ip}\n")
-
-log_file.close()
+    return failed_attempts
