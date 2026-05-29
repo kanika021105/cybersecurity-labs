@@ -24,3 +24,15 @@ Detects:
 
 ## Status
 Project under development.
+
+
+## Dashboard Features
+
+- Log Analysis
+- Warning Detection
+- Error Detection
+- Security Event Monitoring
+
+## Example Output
+
+![Dashboard Log Analysis](../screenshots/dashboard-log-analysis.png)
