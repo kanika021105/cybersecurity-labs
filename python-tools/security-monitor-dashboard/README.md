@@ -35,4 +35,4 @@ Project under development.
 
 ## Example Output
 
-![Dashboard Log Analysis](../screenshots/dashboard-log-analysis.png)
+![Dashboard Log Analysis](../screenshots/dashboard-log-analysis.png.jpeg)
