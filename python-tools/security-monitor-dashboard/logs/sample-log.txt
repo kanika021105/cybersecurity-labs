@@ -1,1 +1,7 @@
-
+INFO User login successful
+WARNING Multiple failed login attempts
+ERROR Invalid password detected
+INFO File uploaded
+WARNING Suspicious IP detected
+ERROR Unauthorized access attempt
+INFO User logged out
