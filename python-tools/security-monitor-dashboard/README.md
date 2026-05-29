@@ -36,3 +36,15 @@ Project under development.
 ## Example Output
 
 ![Dashboard Log Analysis](../../screenshots/dashboard-log-analysis.png.jpeg)
+
+
+## Login Monitoring
+
+Features:
+- Detects failed logins
+- Tracks suspicious IP addresses
+- Generates brute-force alerts
+
+### Example Alert
+
+![Login Alerts](screenshots/dashboard-login-alerts.png)
