@@ -1,11 +1,14 @@
+from modules.log_analyzer import analyze_logs
+
 print("================================")
 print(" SECURITY MONITORING DASHBOARD ")
 print("================================")
 
-print("\nRunning Log Analyzer...")
-print("✔ Log analysis completed")
+warnings, errors = analyze_logs()
 
-print("\nRunning Login Detector...")
-print("✔ Login detection completed")
+print("\nLog Analysis Results")
+print("--------------------")
+print(f"Warnings Detected: {warnings}")
+print(f"Errors Detected: {errors}")
 
 print("\nDashboard Loaded Successfully")
