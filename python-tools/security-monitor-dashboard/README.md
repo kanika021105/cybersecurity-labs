@@ -48,3 +48,15 @@ Features:
 ### Example Alert
 
 ![Login Alerts](../../screenshots/dashboard-login-alerts.png)
+
+## Network Monitoring
+
+Features:
+- Captures live packets
+- Displays source IP
+- Displays destination IP
+- Displays protocol information
+
+### Example Output
+
+![Network Monitoring](../../screenshots/dashboard-network-monitoring.png)
