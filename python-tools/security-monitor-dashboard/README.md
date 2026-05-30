@@ -60,3 +60,15 @@ Features:
 ### Example Output
 
 ![Network Monitoring](../../screenshots/dashboard-network-monitoring.png)
+
+## Alert Summary Panel
+
+The dashboard classifies security events into:
+
+- HIGH
+- MEDIUM
+- INFO
+
+### Example Output
+
+![Alert Summary](../../screenshots/dashboard-alert-summary.png)
