@@ -1,74 +1,77 @@
 # Security Monitoring Dashboard
 
-A cybersecurity monitoring project built using Python.
+A Python-based cybersecurity monitoring dashboard that combines log analysis, suspicious login detection, and network monitoring into a single security monitoring platform.
 
-## Modules
+## Features
 
-### Log Analyzer
-Detects:
-- warnings
-- errors
-- suspicious activity
+### Log Analysis
+- Detects warnings and errors
+- Monitors suspicious log activity
+- Generates security event counts
 
-### Login Detector
-Detects:
-- failed logins
-- brute-force attempts
-- suspicious IP addresses
+### Login Monitoring
+- Detects failed login attempts
+- Identifies suspicious IP addresses
+- Detects possible brute-force attacks
 
-## Technologies
-- Python
+### Network Monitoring
+- Captures live packets
+- Displays source and destination IPs
+- Shows protocol information
+
+### Alert Summary
+- HIGH severity alerts
+- MEDIUM severity alerts
+- INFO notifications
+
+---
+
+## Technologies Used
+
+- Python 3
 - Scapy
-- Log Analysis
+- File Handling
 - Network Monitoring
-
-## Status
-Project under development.
-
-
-## Dashboard Features
-
 - Log Analysis
-- Warning Detection
-- Error Detection
-- Security Event Monitoring
 
-## Example Output
+---
 
-![Dashboard Log Analysis](../../screenshots/dashboard-log-analysis.png.jpeg)
+## Project Structure
 
+security-monitor-dashboard/
+├── logs/
+├── modules/
+├── screenshots/
+├── dashboard.py
+├── requirements.txt
+└── README.md
 
-## Login Monitoring
+---
 
-Features:
-- Detects failed logins
-- Tracks suspicious IP addresses
-- Generates brute-force alerts
+## Screenshots
 
-### Example Alert
+### Dashboard Log Analysis
+
+![Log Analysis](../../screenshots/dashboard-log-analysis.png)
+
+### Login Monitoring
 
 ![Login Alerts](../../screenshots/dashboard-login-alerts.png)
 
-## Network Monitoring
-
-Features:
-- Captures live packets
-- Displays source IP
-- Displays destination IP
-- Displays protocol information
-
-### Example Output
+### Network Monitoring
 
 ![Network Monitoring](../../screenshots/dashboard-network-monitoring.png)
 
-## Alert Summary Panel
-
-The dashboard classifies security events into:
-
-- HIGH
-- MEDIUM
-- INFO
-
-### Example Output
+### Alert Summary
 
 ![Alert Summary](../../screenshots/dashboard-alert-summary.png)
+
+---
+
+## Future Improvements
+
+- Real-time monitoring
+- CSV report generation
+- Email alerts
+- Threat scoring
+- GUI dashboard
