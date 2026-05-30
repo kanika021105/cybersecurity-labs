@@ -52,7 +52,7 @@ security-monitor-dashboard/
 
 ### Dashboard Log Analysis
 
-![Log Analysis](../../screenshots/dashboard-log-analysis.png)
+![Log Analysis](../../screenshots/dashboard-log-analysis.png.jpeg)
 
 ### Login Monitoring
 
