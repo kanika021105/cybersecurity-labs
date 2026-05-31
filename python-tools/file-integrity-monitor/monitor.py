@@ -32,7 +32,7 @@ if not os.path.exists(BASELINE_FILE):
 
             baseline.write(f"{file}:{hash_value}\n")
 
-    print("✅ Baseline Created")
+    print(" Baseline Created")
 
 else:
 
@@ -57,19 +57,19 @@ else:
 
             if current_hash == stored_hashes[file]:
 
-                print(f"✅ {file} : Integrity Verified")
+                print(f" {file} : Integrity Verified")
 
             else:
 
-                print(f"🚨 {file} : File Modified")
+                print(f" {file} : File Modified")
 
         else:
 
-            print(f"🆕 {file} : New File Detected")
+            print(f" {file} : New File Detected")
 
     # Check deleted files
     for file in stored_hashes:
 
         if file not in current_hashes:
 
-            print(f"❌ {file} : File Deleted")
+            print(f" {file} : File Deleted")
