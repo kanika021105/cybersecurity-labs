@@ -1,33 +1,58 @@
 import hashlib
+import os
 
-def calculate_hash(filename):
-
-    with open(filename, "rb") as file:
-        data = file.read()
-
-    return hashlib.sha256(data).hexdigest()
+BASELINE_FILE = "baseline.txt"
+MONITOR_DIR = "monitored-files"
 
 
-filename = "testfile.txt"
+def calculate_hash(filepath):
 
-current_hash = calculate_hash(filename)
+    with open(filepath, "rb") as file:
+        return hashlib.sha256(file.read()).hexdigest()
 
-try:
 
-    with open("baseline.txt", "r") as baseline:
-        stored_hash = baseline.read()
+current_hashes = {}
 
-    if current_hash == stored_hash:
+for filename in os.listdir(MONITOR_DIR):
 
-        print("✅ File Integrity Verified")
+    filepath = os.path.join(MONITOR_DIR, filename)
 
-    else:
+    if os.path.isfile(filepath):
 
-        print("🚨 ALERT: File Has Been Modified")
+        current_hashes[filename] = calculate_hash(filepath)
 
-except FileNotFoundError:
+# First Run
+if not os.path.exists(BASELINE_FILE):
 
-    with open("baseline.txt", "w") as baseline:
-        baseline.write(current_hash)
+    with open(BASELINE_FILE, "w") as baseline:
 
-    print("Baseline Created Successfully")
+        for file, hash_value in current_hashes.items():
+            baseline.write(f"{file}:{hash_value}\n")
+
+    print(" Baseline Created")
+
+else:
+
+    stored_hashes = {}
+
+    with open(BASELINE_FILE, "r") as baseline:
+
+        for line in baseline:
+
+            file, hash_value = line.strip().split(":")
+            stored_hashes[file] = hash_value
+
+    print("\n===== FILE INTEGRITY REPORT =====\n")
+
+    for file, current_hash in current_hashes.items():
+
+        if file in stored_hashes:
+
+            if current_hash == stored_hashes[file]:
+
+                print(f" {file} : Integrity Verified")
+
+            else:
+
+                print(f" {file} : File Modified")
+  
