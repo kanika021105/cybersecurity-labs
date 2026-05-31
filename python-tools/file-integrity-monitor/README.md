@@ -40,3 +40,15 @@ The system can monitor multiple files simultaneously and detect unauthorized mod
 ### File Modification Alert
 ![Multiple File Monitoring](../../screenshots/fim-multiple-files-alert.png)
 
+
+## Advanced Monitoring
+
+The system can detect:
+
+- File modifications
+- Newly created files
+- Deleted files
+
+### Example Output
+
+![Advanced Monitoring](../../screenshots/fim-full-monitoring.png)
