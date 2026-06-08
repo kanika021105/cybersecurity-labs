@@ -64,10 +64,17 @@ All security events are logged with timestamps for auditing purposes.
 
 ### Example Output
 ![Security Report and timestamped events](../../screenshots/security-audit-report.png)
+
+
+## Severity Classification
+
+Security events are categorized by priority.
+
+### Example Output
+![Severity Summary](../../screenshots/fim-severity-summary.png)
+
+
  
-
-
-
 ## Future Improvements
 Severity Classification
 Email Alerts
