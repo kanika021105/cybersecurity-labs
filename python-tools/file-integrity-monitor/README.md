@@ -52,3 +52,26 @@ The system can detect:
 ### Example Output
 
 ![Advanced Monitoring](../../screenshots/fim-full-monitoring.png)
+
+
+### Security Audit Reports
+The system automatically generates a security audit report after each scan.
+
+
+### Timestamped Events
+
+All security events are logged with timestamps for auditing purposes.
+
+### Example Output
+![Security Report and timestamped events](../../screenshots/security-audit-report.png)
+ 
+
+
+
+## Future Improvements
+Severity Classification
+Email Alerts
+Real-Time Monitoring
+Folder Monitoring
+GUI Dashboard
+Threat Scoring
