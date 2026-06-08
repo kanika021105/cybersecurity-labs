@@ -11,10 +11,8 @@ def calculate_hash(filepath):
         return hashlib.sha256(file.read()).hexdigest()
 
 
-# Get current timestamp
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-# Store current file hashes
 current_hashes = {}
 
 for filename in os.listdir(MONITOR_DIR):
@@ -26,7 +24,7 @@ for filename in os.listdir(MONITOR_DIR):
         current_hashes[filename] = calculate_hash(filepath)
 
 
-# First run: create baseline
+# First Run
 if not os.path.exists(BASELINE_FILE):
 
     with open(BASELINE_FILE, "w") as baseline:
@@ -44,6 +42,11 @@ else:
     modified_files = []
     new_files = []
     deleted_files = []
+
+    high_count = 0
+    medium_count = 0
+    low_count = 0
+    info_count = 0
 
     # Load baseline hashes
     with open(BASELINE_FILE, "r") as baseline:
@@ -65,30 +68,53 @@ else:
 
             if current_hash == stored_hashes[file]:
 
-                print(f"[{timestamp}]  {file} : Integrity Verified")
+                print(
+                    f"[INFO] [{timestamp}]  {file} : Integrity Verified"
+                )
+
+                info_count += 1
 
             else:
 
-                print(f"[{timestamp}]  {file} : File Modified")
+                print(
+                    f"[HIGH] [{timestamp}]  {file} : File Modified"
+                )
 
                 modified_files.append(file)
 
+                high_count += 1
+
         else:
 
-            print(f"[{timestamp}]  {file} : New File Detected")
+            print(
+                f"[LOW] [{timestamp}]  {file} : New File Detected"
+            )
 
             new_files.append(file)
+
+            low_count += 1
 
     # Check deleted files
     for file in stored_hashes:
 
         if file not in current_hashes:
 
-            print(f"[{timestamp}]  {file} : File Deleted")
+            print(
+                f"[MEDIUM] [{timestamp}]  {file} : File Deleted"
+            )
 
             deleted_files.append(file)
 
-    # Generate report
+            medium_count += 1
+
+    print("\n===== SECURITY SUMMARY =====\n")
+
+    print(f"HIGH: {high_count}")
+    print(f"MEDIUM: {medium_count}")
+    print(f"LOW: {low_count}")
+    print(f"INFO: {info_count}")
+
+    # Generate Report
     with open("security-report.txt", "w") as report:
 
         report.write("===== SECURITY AUDIT REPORT =====\n\n")
@@ -131,4 +157,13 @@ else:
 
             report.write("None\n")
 
+        report.write("\n===== SECURITY SUMMARY =====\n\n")
+
+        report.write(f"HIGH: {high_count}\n")
+        report.write(f"MEDIUM: {medium_count}\n")
+        report.write(f"LOW: {low_count}\n")
+        report.write(f"INFO: {info_count}\n")
+
     print("\n Security report generated: security-report.txt")
+               
+           
