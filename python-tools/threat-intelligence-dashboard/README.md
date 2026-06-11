@@ -90,3 +90,36 @@ Displays the highest-risk IP addresses.
 ### Example Output
 
 ![Top Threats](../../screenshots/threat-top-threats.png)
+
+
+## Risk Analytics
+
+The dashboard calculates risk distribution across all threat indicators.
+
+
+
+## Threat Search
+
+Users can search for specific IP addresses in the threat feed.
+
+
+
+## Environment Risk Rating
+
+The dashboard automatically determines:
+
+- LOW
+- MEDIUM
+- HIGH
+- CRITICAL
+
+risk levels for the analyzed environment.
+
+### Example Output
+
+![Threat Search](../../screenshots/threat-ip-search.png)
+
+
+### Example Dashboard
+
+![Dashboard V2](../../screenshots/threat-dashboard-v2.png)
