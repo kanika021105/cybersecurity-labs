@@ -16,6 +16,10 @@ This repository documents my cybersecurity learning journey through hands-on lab
 * CSV exports
 * HTML dashboard reporting
 
+
+![Threat Dashboard](screenshots/threat-dashboard-v2.png)
+
+
 ###  Web Vulnerability Scanner
 
 * HTTPS verification
@@ -23,6 +27,9 @@ This repository documents my cybersecurity learning journey through hands-on lab
 * Redirect analysis
 * Security scoring
 * HTML reporting
+  
+![Web Scanner](screenshots/web-html-report.png)
+
 
 ###  File Integrity Monitoring System
 
