@@ -28,7 +28,7 @@ This repository documents my cybersecurity learning journey through hands-on lab
 * Security scoring
 * HTML reporting
   
-![Web Scanner](screenshots/web-html-report.png)
+![Web Scanner](screenshots/html-report.png)
 
 
 ###  File Integrity Monitoring System
