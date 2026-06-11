@@ -1,60 +1,96 @@
-high_risk_ips = [
-    "185.220.101.1",
-    "45.33.32.156"
-]
+import json
+import csv
+from datetime import datetime
 
-medium_risk_ips = [
-    "8.8.8.8"
-]
-
-with open("threats.txt", "r") as file:
-
-    ips = file.readlines()
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 high = 0
 medium = 0
 low = 0
 
 report = []
+csv_data = []
 
 print("\n===== THREAT INTELLIGENCE REPORT =====\n")
 
-for ip in ips:
+with open("threats.json", "r") as file:
 
-    ip = ip.strip()
+    threats = json.load(file)
 
-    if ip in high_risk_ips:
+for threat in threats:
 
-        print(f"[HIGH] {ip}")
+    ip = threat["ip"]
+    risk = threat["risk"]
 
-        report.append(f"[HIGH] {ip}\n")
+    if risk == "HIGH":
+
+        score = 90
 
         high += 1
 
-    elif ip in medium_risk_ips:
+    elif risk == "MEDIUM":
 
-        print(f"[MEDIUM] {ip}")
-
-        report.append(f"[MEDIUM] {ip}\n")
+        score = 60
 
         medium += 1
 
     else:
 
-        print(f"[LOW] {ip}")
-
-        report.append(f"[LOW] {ip}\n")
+        score = 20
 
         low += 1
 
-print("\n===== SUMMARY =====\n")
+    print(
+        f"[{timestamp}] [{risk}] {ip} | Threat Score: {score}"
+    )
+
+    report.append(
+        f"[{timestamp}] [{risk}] {ip} | Threat Score: {score}\n"
+    )
+
+    csv_data.append(
+        [
+            timestamp,
+            ip,
+            risk,
+            score
+        ]
+    )
+
+print("\n===== DASHBOARD SUMMARY =====\n")
 
 print(f"HIGH: {high}")
 print(f"MEDIUM: {medium}")
 print(f"LOW: {low}")
 
+total = high + medium + low
+
+print(f"\nTotal IPs Analysed: {total}")
+
+
 with open("threat-report.txt", "w") as file:
 
     file.writelines(report)
 
-print("\n Threat report generated")
+
+with open(
+    "threat-report.csv",
+    "w",
+    newline=""
+) as csvfile:
+
+    writer = csv.writer(csvfile)
+
+    writer.writerow(
+        [
+            "Timestamp",
+            "IP Address",
+            "Risk",
+            "Threat Score"
+        ]
+    )
+
+    writer.writerows(csv_data)
+
+print("\n threat-report.txt generated")
+print(" threat-report.csv generated")
