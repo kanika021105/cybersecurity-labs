@@ -79,7 +79,7 @@ Users can filter threats by:
 
 ### Example Output
 
-![Threat Filtering](../../screenshots/threat-dashboard-summary.png)
+![Threat Filtering](../../screenshots/threat-dashboard-top-summary.png)
 
 ---
 
