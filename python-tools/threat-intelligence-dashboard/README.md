@@ -57,3 +57,36 @@ Threat intelligence findings are exported to CSV format.
 ## JSON Threat Feed Support
 
 The dashboard can parse structured threat feeds in JSON format.
+
+## HTML Dashboard
+
+The project generates a browser-friendly dashboard.
+
+### Example Dashboard
+
+![HTML Dashboard](../../screenshots/threat-html-dashboard.png)
+
+---
+
+## Threat Filtering
+
+Users can filter threats by:
+
+- HIGH
+- MEDIUM
+- LOW
+- ALL
+
+### Example Output
+
+![Threat Filtering](../../screenshots/threat-dashboard-summary.png)
+
+---
+
+## Top Threats
+
+Displays the highest-risk IP addresses.
+
+### Example Output
+
+![Top Threats](../../screenshots/threat-top-threats.png)
