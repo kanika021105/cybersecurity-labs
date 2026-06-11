@@ -11,14 +11,14 @@ low = 0
 report = []
 csv_data = []
 
-print("\n===== THREAT INTELLIGENCE REPORT =====\n")
+print("\n===== THREAT INTELLIGENCE DASHBOARD =====\n")
 
+# Load Threat Feed
 with open("threats.json", "r") as file:
 
     threats = json.load(file)
 
-# Search Filter
-
+# Risk Filter
 risk_filter = input(
     "Filter by risk (HIGH/MEDIUM/LOW/ALL): "
 ).upper()
@@ -35,6 +35,33 @@ for threat in threats:
 
         filtered_threats.append(threat)
 
+# Search Feature
+search_ip = input(
+    "Search IP (or press Enter to skip): "
+).strip()
+
+if search_ip:
+
+    found = False
+
+    print("\n===== SEARCH RESULTS =====\n")
+
+    for threat in threats:
+
+        if threat["ip"] == search_ip:
+
+            print(
+                f"IP: {threat['ip']} | Risk: {threat['risk']}"
+            )
+
+            found = True
+
+    if not found:
+
+        print("IP not found in threat feed")
+
+print("\n===== THREAT REPORT =====\n")
+
 for threat in filtered_threats:
 
     ip = threat["ip"]
@@ -43,19 +70,16 @@ for threat in filtered_threats:
     if risk == "HIGH":
 
         score = 90
-
         high += 1
 
     elif risk == "MEDIUM":
 
         score = 60
-
         medium += 1
 
     else:
 
         score = 20
-
         low += 1
 
     print(
@@ -75,18 +99,57 @@ for threat in filtered_threats:
         ]
     )
 
+total = high + medium + low
+
 print("\n===== DASHBOARD SUMMARY =====\n")
 
 print(f"HIGH: {high}")
 print(f"MEDIUM: {medium}")
 print(f"LOW: {low}")
 
-total = high + medium + low
-
 print(f"\nTotal IPs Analysed: {total}")
 
-# Top Threats
+# Risk Analytics
+print("\n===== RISK ANALYTICS =====\n")
 
+if total > 0:
+
+    high_percent = (high / total) * 100
+    medium_percent = (medium / total) * 100
+    low_percent = (low / total) * 100
+
+else:
+
+    high_percent = 0
+    medium_percent = 0
+    low_percent = 0
+
+print(f"HIGH Risk: {high_percent:.1f}%")
+print(f"MEDIUM Risk: {medium_percent:.1f}%")
+print(f"LOW Risk: {low_percent:.1f}%")
+
+# Environment Risk Rating
+if high >= 2:
+
+    overall_risk = "CRITICAL"
+
+elif high >= 1:
+
+    overall_risk = "HIGH"
+
+elif medium >= 2:
+
+    overall_risk = "MEDIUM"
+
+else:
+
+    overall_risk = "LOW"
+
+print(
+    f"\nOverall Environment Risk: {overall_risk}"
+)
+
+# Top Threats
 print("\n===== TOP THREATS =====\n")
 
 for threat in filtered_threats:
@@ -95,8 +158,7 @@ for threat in filtered_threats:
 
         print(threat["ip"])
 
-# Text Report
-
+# Generate Text Report
 with open(
     "threat-report.txt",
     "w"
@@ -104,8 +166,7 @@ with open(
 
     file.writelines(report)
 
-# CSV Report
-
+# Generate CSV Report
 with open(
     "threat-report.csv",
     "w",
@@ -125,11 +186,9 @@ with open(
 
     writer.writerows(csv_data)
 
-# HTML Dashboard
-
+# Generate HTML Dashboard
 html = f"""
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -139,7 +198,7 @@ html = f"""
 <style>
 
 body {{
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     margin: 40px;
 }}
 
@@ -189,6 +248,15 @@ th {{
 <li>MEDIUM: {medium}</li>
 <li>LOW: {low}</li>
 <li>Total IPs: {total}</li>
+</ul>
+
+<h2>Risk Analytics</h2>
+
+<ul>
+<li>HIGH Risk: {high_percent:.1f}%</li>
+<li>MEDIUM Risk: {medium_percent:.1f}%</li>
+<li>LOW Risk: {low_percent:.1f}%</li>
+<li>Environment Risk: {overall_risk}</li>
 </ul>
 
 <h2>Threat Feed</h2>
